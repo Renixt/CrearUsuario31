@@ -10,6 +10,7 @@ const getAllContacts = async(req, res) => {
 				{ "nombre": "José", "numero": 99972822},
 				{ "nombre": "Juan", "numero": 44236587},
 				{ "nombre": "niní", "numero": 44625357},
+				{ "nombre": "Jose", "numero": 4489555357},
 			]
       	})
 
