@@ -1,10 +1,10 @@
 const { Sequelize, DataTypes } = require('sequelize');
 
-// Esquemas
+// 1. Importar esquema
 const UserModel = require('./models/users');
+const TernantModel = require('./models/ternant');
 
-
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASS, {
+const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME,process.env.DB_PASS,{
     host: process.env.DB_HOST,
     dialect: process.env.DB_DIALECT,
     port: process.env.DB_PORT,
@@ -14,24 +14,25 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, pr
         acquire: 30000,
         idle: 10000
     },
-    logging: false
+    loggin: false
 });
 
-sequelize.authenticate().then(() => {
+sequelize.authenticate().then(()=>{
     console.log('Database Connected');
-}).catch((error)=> {
+}).catch((error)=>{
     console.log(error)
 })
 
 const User = UserModel(sequelize, DataTypes);
+const Ternant = TernantModel (sequelize, DataTypes);
 
-sequelize.sync({alter: true}).then(()=> {
+sequelize.sync({alter: true}).then(()=>{
     console.log('Database && tables was synchronizes!')
 }).catch((e) => {
     console.log(e)
     console.log('Error while trying connecting to Database')
 })
-
 module.exports = {
-    User
+    User, Ternant
 }
+    
