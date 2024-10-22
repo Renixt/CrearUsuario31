@@ -2,7 +2,7 @@ const { Sequelize, DataTypes } = require('sequelize');
 
 // 1. Importar esquema
 const UserModel = require('./models/users');
-const TernantModel = require('./models/ternant');
+const TenantModel = require('./models/tenants');
 
 const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME,process.env.DB_PASS,{
     host: process.env.DB_HOST,
@@ -24,7 +24,7 @@ sequelize.authenticate().then(()=>{
 })
 
 const User = UserModel(sequelize, DataTypes);
-const Ternant = TernantModel (sequelize, DataTypes);
+const Tenant = TenantModel (sequelize, DataTypes);
 
 sequelize.sync({alter: true}).then(()=>{
     console.log('Database && tables was synchronizes!')
@@ -33,6 +33,7 @@ sequelize.sync({alter: true}).then(()=>{
     console.log('Error while trying connecting to Database')
 })
 module.exports = {
-    User, Ternant
+    User,
+    Tenant
 }
     

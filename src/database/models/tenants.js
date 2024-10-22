@@ -1,5 +1,5 @@
 module.exports = (sequelize, type) => {
-    return sequelize.define('ternant', {
+    return sequelize.define('tenants', {
         id: {
             type: type.BIGINT,
             autoIncrement: true,
