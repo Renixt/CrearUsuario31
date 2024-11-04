@@ -8,6 +8,8 @@ const port = process.env.PORT;
 // RUTAS
 const ContactsRoutes = require('./src/routes/contacts.routes');
 const UsersRoutes = require('./src/routes/users.routes');
+const LoginRoutes = require('./src/routes/login.routes');
+const TenantRoutes = require('./src/routes/tenants.routes');
 
 var corsOptions = {
   origin: '*',
@@ -16,10 +18,14 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // RUTAS DE CONTACTOS
-app.use('/contactos', ContactsRoutes)
+app.use('/contactos', ContactsRoutes);
 // RUTA DE USUARIOS
-app.use('/users', UsersRoutes)
+app.use('/users', UsersRoutes);
+// RUTA DE LOGIN
+app.use('/login', LoginRoutes);
+// RUTA DE TENANTS
+app.use('/tenants', TenantRoutes);
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${port}`);
 })
