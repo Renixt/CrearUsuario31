@@ -1,3 +1,4 @@
+//Sequelize se encarga de la conexion y manejo de consultas
 const { Sequelize, DataTypes } = require('sequelize');
 
 // Importar modelos desde la carpeta models
