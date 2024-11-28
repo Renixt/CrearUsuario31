@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-//const cors = require('cors');
+import Link from "next/link"; // Importa el componente Link para la navegación
 
 function CrearUsuario() {
   // States
@@ -10,7 +10,6 @@ function CrearUsuario() {
   const [username, setUsername] = useState('');
   const [contrasena, setContrasena] = useState('');
   const [foto, setFoto] = 'hola';
-
 
   // HACER UNA PETICION POST PARA ENVIAR LOS DATOS EN UN JSON(ESPECIFICAMENTE EN EL BODY) Y SE ENVIAN A users.controllers
   const handleSubmit = async (e) => {
@@ -58,7 +57,6 @@ function CrearUsuario() {
             placeholder="Nombre"
             value={nombre} //guardamos lo que se escriba en la varibale
             onChange={(e) => setNombre(e.target.value)} //fucnion para guardar lo que se escriba set= definir
-
             required
           />
           <input
@@ -68,7 +66,6 @@ function CrearUsuario() {
             placeholder="Apellido"
             value={apellido}
             onChange={(e) => setApellido(e.target.value)}
-
             required
           />
           <input
@@ -78,7 +75,6 @@ function CrearUsuario() {
             placeholder="Correo electrónico"
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-
             required
           />
           <input
@@ -88,7 +84,6 @@ function CrearUsuario() {
             placeholder="Nombre de usuario"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-
             required
           />
           <input
@@ -98,7 +93,6 @@ function CrearUsuario() {
             placeholder="Contraseña"
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
-
             required
           />
           
@@ -109,23 +103,18 @@ function CrearUsuario() {
             Crear Usuario
           </button>
         </form>
+
+        {/* Botón para navegar a la página About */}
+        <div className="mt-4">
+          <Link href="/about">
+            <button className="p-3 bg-teal-500 text-white font-semibold rounded-md hover:bg-teal-600 transition duration-300 w-full">
+              Lista de usuarios
+            </button>
+          </Link>
+        </div>
       </div>
     </div>
   );
 }
 
 export default CrearUsuario;
-
-/*<div>
-            <label
-              className="block text-sm font-medium text-gray-700 mb-1"
-              htmlFor="file_input"
-            >
-              Foto de Usuario
-            </label>
-            <input
-              className="block w-full text-sm text-gray-700 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-              id="file_input"
-              type="file"
-            />
-          </div>*/ 

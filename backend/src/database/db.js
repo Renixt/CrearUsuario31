@@ -1,9 +1,20 @@
-//Sequelize se encarga de la conexion y manejo de consultas
+// Sequelize se encarga de la conexion y manejo de consultas
 const { Sequelize, DataTypes } = require('sequelize');
 
 // Importar modelos desde la carpeta models
 const UserModel = require('./models/users');
 const TenantModel = require('./models/tenants');
+
+// Configuración SSL
+let sslopt = {};
+if (process.env.NODE_ENV !== "development") {
+  sslopt = {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  };
+}
 
 // Inicializar Sequelize
 const sequelize = new Sequelize(
@@ -20,7 +31,8 @@ const sequelize = new Sequelize(
       acquire: 30000,
       idle: 10000
     },
-    logging: false
+    logging: false,
+    ...sslopt // Agregar la configuración SSL aquí
   }
 );
 
