@@ -15,13 +15,14 @@ const getUser =  (req,res) => {
 
 const createUser = async (req,res) => {
     try {
+        const {nombre, apellido, email, username, contrasena,foto} = req.body;
         const user = await User.create({
-            firstName: "Renata",
-            lastName: "Castillo",
-            photo: "photo",
-            email: "reni@hotmail.com",
-            username: "renixt2",
-            password: "1234",
+            firstName: nombre,
+            lastName: apellido,
+            photo: foto,
+            email: email,
+            username: username,
+            password: contrasena,
             tenant_id: 1
         });
 
